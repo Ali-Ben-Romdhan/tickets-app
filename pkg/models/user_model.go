@@ -9,6 +9,6 @@ type User struct {
 		Email string `json:"email,omitempty" validate:"required"`
 		Password string `json:"password,omitempty" validate:"required"`
 		ConfirmPassword string `json:"confirmPassword,omitempty" validate:"required"`
-		Tickets []primitive.ObjectID `json:"tickets,omitempty" validate:"required"`
+		Books []primitive.ObjectID `json:"books,omitempty" validate:"required"`
 		DepartmentId   primitive.ObjectID `json:"departmentId,omitempty" validate:"required"`
 }

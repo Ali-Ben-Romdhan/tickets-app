@@ -4,7 +4,6 @@ import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Dish struct {
     Id       primitive.ObjectID `json:"id,omitempty"`
-    TicketReference     string             `json:"ticketReference,omitempty" validate:"required"`
-    UserId string             `json:"userId,omitempty" validate:"required"`
-    Title    string             `json:"title,omitempty" validate:"required"`
+    DishTypeId string             `json:"dishTypeId,omitempty" validate:"required"`
+    Name    string             `json:"title,omitempty" validate:"required"`
 }
