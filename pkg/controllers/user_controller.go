@@ -35,9 +35,12 @@ func CreateUser(c echo.Context) error {
 
     newUser := models.User{
         Id:       primitive.NewObjectID(),
-        Name:     user.Name,
-        Location: user.Location,
-        Title:    user.Title,
+        Name:     user.Name,			
+				JobTitle:   user.JobTitle,
+				Email: user.Email,
+				Password: user.Password,
+				ConfirmPassword: user.ConfirmPassword,
+				DepartmentId:   primitive.NewObjectID(),
     }
 
     result, err := userCollection.InsertOne(ctx, newUser)
@@ -87,7 +90,7 @@ func EditAUser(c echo.Context) error {
 			return c.JSON(http.StatusBadRequest, responses.UserResponse{Status: http.StatusBadRequest, Message: "error", Data: &echo.Map{"data": validationErr.Error()}})
 	}
 
-	update := bson.M{"name": user.Name, "location": user.Location, "title": user.Title}
+	update := bson.M{"name": user.Name, "email": user.Email, "jobTitle": user.JobTitle,"departmentId":user.DepartmentId}
 
 	result, err := userCollection.UpdateOne(ctx, bson.M{"id": objId}, bson.M{"$set": update})
 
